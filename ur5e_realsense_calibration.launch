@@ -1,0 +1,57 @@
+<launch>
+    <arg name="namespace_prefix" default="ur5e_realsense_calibration" />
+    <arg name="eye_on_hand" default="false" />
+
+    <arg name="camera_namespace" default="/camera/color" />
+    <arg name="robot_ip" doc="The IP address of the UR5e robot" default="192.168.1.3" />
+
+    <arg name="marker_size" doc="Size of the ArUco marker used, in meters" default="0.045" />
+    <arg name="marker_id" doc="The ID of the ArUco marker used" default="200" />
+
+
+    <!-- 1. start the realsense -->
+    <include file="$(find realsense2_camera)/launch/rs_camera.launch" >
+        <arg name="color_height" value="1080" />
+        <arg name="color_width" value="1920" />
+        <arg name="color_fps" value="30" />
+    </include>
+
+    <!-- 2. start ArUco -->
+    <node name="aruco_tracker" pkg="aruco_ros" type="single">
+        <remap from="/camera_info" to="/camera/color/camera_info" />
+        <remap from="/image" to="/camera/color/image_raw" />
+        <param name="image_is_rectified" value="true"/>
+        <param name="marker_size"        value="$(arg marker_size)"/>
+        <param name="marker_id"          value="$(arg marker_id)"/>
+        <param name="reference_frame"    value="camera_color_optical_frame"/>
+        <param name="camera_frame"       value="camera_color_optical_frame"/>
+        <param name="marker_frame"       value="camera_marker" />
+        <param name="corner_refinement"  value="LINES" />
+
+    </node>
+
+    <!-- 3. start the robot -->
+    <include file="$(find ur_robot_driver)/launch/ur5e_bringup.launch">
+        <!-- <arg name="limited" value="true" /> -->
+        <arg name="robot_ip" value="192.168.1.3" />
+    </include>
+    <include file="$(find ur5e_moveit_config)/launch/moveit_planning_execution.launch">
+        <!-- <arg name="limited" value="true" /> -->
+    </include>
+
+    <!-- 4. start easy_handeye -->
+    <include file="$(find easy_handeye)/launch/calibrate.launch" >
+        <arg name="namespace_prefix" value="$(arg namespace_prefix)" />
+        <arg name="eye_on_hand" value="true" />
+
+        <arg name="tracking_base_frame" value="camera_color_optical_frame" />
+        <arg name="tracking_marker_frame" value="camera_marker" />
+        <arg name="robot_base_frame" value="base" />
+        <arg name="robot_effector_frame" value="tool0_controller" />
+
+        <arg name="freehand_robot_movement" value="false" />
+        <arg name="robot_velocity_scaling" value="0.5" />
+        <arg name="robot_acceleration_scaling" value="0.2" />
+    </include>
+
+</launch>
