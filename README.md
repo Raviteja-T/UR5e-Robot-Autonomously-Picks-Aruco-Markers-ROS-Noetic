@@ -39,6 +39,17 @@ To run this project, you will need the following hardware:
 
 Ensure that all hardware components are properly connected and configured before running the system.
 
+## Usage
+
+python3 27-11.py
+
+## Features
+
+- Aruco Marker Recognition: Identify Aruco markers on objects for precise localization.
+- Trajectory Planning: Plan a trajectory for the UR5e to pick up and place objects autonomously.
+- Object Detection: Detect and recognize objects in the workspace for efficient manipulation.
+- User Interface: Include a user interface for easy interaction and monitoring.
+
 ## Result
 
 ![Universal Robot](https://github.com/Raviteja-T/test_auto/raw/master/Universal_robot.gif)
