@@ -54,3 +54,12 @@ python3 27-11.py
 
 ![Universal Robot](https://github.com/Raviteja-T/test_auto/raw/master/Universal_robot.gif)
 
+## Contact Information
+
+For any questions or further information about this project, feel free to contact:
+
+- **Name:** Raviteja Tirumalapudi
+- **Email:** [t.raviteja@gmail.com](mailto:t.raviteja@gmail.com)
+
+Feel free to reach out with any inquiries or feedback.
+
