@@ -11,6 +11,7 @@ This project aims to implement an autonomous pick-and-place system using the Aru
 - [Installation](#installation)
 - [Usage](#usage)
 - [Features](#features)
+- [Result](#Result)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -37,3 +38,8 @@ To run this project, you will need the following hardware:
 - OnRobot RG2 Gripper with Compute Box
 
 Ensure that all hardware components are properly connected and configured before running the system.
+
+## Result
+
+![Universal Robot](https://github.com/Raviteja-T/test_auto/raw/master/Universal_robot.gif)
+
