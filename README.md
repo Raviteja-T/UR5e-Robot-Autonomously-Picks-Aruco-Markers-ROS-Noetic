@@ -41,7 +41,7 @@ Ensure that all hardware components are properly connected and configured before
 
 ## Usage
 
-python3 27-11.py
+python3 setup.py
 
 ## Features
 
