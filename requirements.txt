@@ -122,7 +122,7 @@ pyasn1-modules==0.2.1
 pyassimp==4.1.4
 PyAudio==0.2.11
 pycairo==1.16.2
-pycryptodomex==3.6.1
+pycryptodomex==3.19.1
 pycups==1.9.73
 pydot==1.4.1
 PyGithub==1.43.7
